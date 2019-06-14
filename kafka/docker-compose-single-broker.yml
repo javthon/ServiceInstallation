@@ -1,0 +1,17 @@
+version: '2'
+services:
+  zookeeper:
+    image: wurstmeister/zookeeper
+    ports:
+      - "2181:2181"
+  kafka:
+    build: .
+    ports:
+      - "9092:9092"
+    environment:
+      KAFKA_ADVERTISED_HOST_NAME: 118.25.181.142
+      KAFKA_CREATE_TOPICS: "test:1:1,test:1:2"
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_JVM_PERFORMANCE_OPTS: " -Xmx256m -Xms256m"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
