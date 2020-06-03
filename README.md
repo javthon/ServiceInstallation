@@ -120,9 +120,11 @@ db.createUser({
 
 db.auth("admin", "admin")
 
+use testdb
+
 db.createUser({
     user:"developer",
-    pwd:"developer2019",
+    pwd:"developer2020",
     roles:[{
         role:"dbAdmin",
         db:"testdb"
@@ -132,7 +134,7 @@ db.createUser({
     }]
 })
 
-db.auth("developer", "developer2019")
+db.auth("developer", "developer2020")
 
 按ctrl+D退出
 ```
@@ -140,7 +142,7 @@ db.auth("developer", "developer2019")
 -v /root/mongo:/data/db 将主机文件夹mongo挂载到容器db文件夹，mongo文件夹用来存放数据<br>
 -p 27017:27017 将主机端口27017映射到容器端口27017<br>
 --auth 开启权限验证<br>
-连接：mongodb://developer:developer2019@192.168.1.70:27017/testdb<br>
+连接：mongodb://developer:developer2020@192.168.1.70:27017/testdb<br>
 创建了管理员用户admin并用admin创建了用户developer，赋予developer对数据库testdb的管理和读写权限<br>
 
 **补充**<br>
